@@ -15,9 +15,9 @@ const {
     };
     const status = {};
 
-    const birthResponse = await checkBirthPortalStatus(
-      process.env.BIRTH_REGISTRATION_PORTAL_URL
-    );
+    // const birthResponse = await checkBirthPortalStatus(
+    //   process.env.BIRTH_REGISTRATION_PORTAL_URL
+    // );
     const bankResponse = await checkBankAsiaPortalStatus(
       process.env.BANK_ASIA_LOGIN_URL,
       proxy
