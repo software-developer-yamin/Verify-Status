@@ -1,0 +1,17 @@
+{
+  "name": "verify-status",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.3",
+    "https": "^1.0.0",
+    "socks-proxy-agent": "^8.0.4"
+  }
+}
