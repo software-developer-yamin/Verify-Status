@@ -1,6 +1,5 @@
 require("dotenv").config();
 const {
-  checkBirthPortalStatus,
   checkBankAsiaPortalStatus,
   makeHttpsRequestThroughSocksProxy,
 } = require("./thirdPartyApisMethods");
@@ -16,9 +15,6 @@ const {
     };
     const status = {};
 
-    // const birthResponse = await checkBirthPortalStatus(
-    //   process.env.BIRTH_REGISTRATION_PORTAL_URL
-    // );
     const bankResponse = await checkBankAsiaPortalStatus(
       process.env.BANK_ASIA_LOGIN_URL,
       proxy
@@ -28,7 +24,6 @@ const {
       proxy
     );
     // Determine if the responses were successful
-    // status.birth_status = birthResponse.status === 200 ? true : false;
     status.bank_status = bankResponse.status === 200 ? true : false;
     status.nid_status = nidResponse;
     console.log("🚀 ~ checkStatus ~ status:", status);
