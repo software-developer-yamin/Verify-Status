@@ -1,16 +1,14 @@
-const { checkBirthPortalStatus, checkBankAsiaPortalStatus , makeHttpsRequestThroughSocksProxy} = require('./thirdPartyApisMethods');
-
+require("dotenv").config();
+const {
+  checkBirthPortalStatus,
+  checkBankAsiaPortalStatus,
+  makeHttpsRequestThroughSocksProxy,
+} = require("./thirdPartyApisMethods");
 
 (async () => {
   try {
-    const [
-      BANK_ASIA_PROXY_URL,
-      BIRTH_REGISTRATION_PORTAL_URL,
-      BANK_ASIA_LOGIN_URL,
-      NID_REGISTRATION_PORTAL_URL,
-    ] = process.argv.slice(2);
-
-    const [hostname, port] = BANK_ASIA_PROXY_URL.split(":");
+    let url = process.env.BANK_ASIA_PROXY_URL;
+    const [hostname, port] = url.split(":");
     const proxy = {
       host: hostname,
       port: port,
@@ -18,14 +16,14 @@ const { checkBirthPortalStatus, checkBankAsiaPortalStatus , makeHttpsRequestThro
     const status = {};
 
     const birthResponse = await checkBirthPortalStatus(
-      BIRTH_REGISTRATION_PORTAL_URL
+      process.env.BIRTH_REGISTRATION_PORTAL_URL
     );
     const bankResponse = await checkBankAsiaPortalStatus(
-      BANK_ASIA_LOGIN_URL,
+      process.env.BANK_ASIA_LOGIN_URL,
       proxy
     );
     const nidResponse = await makeHttpsRequestThroughSocksProxy(
-      NID_REGISTRATION_PORTAL_URL,
+      process.env.NID_REGISTRATION_PORTAL_URL,
       proxy
     );
     // Determine if the responses were successful
